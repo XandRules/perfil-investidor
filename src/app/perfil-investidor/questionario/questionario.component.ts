@@ -1,3 +1,5 @@
+import { perguntas } from './../models/perguntas.model';
+import { PerguntasService } from './../service/perguntas.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionarioComponent implements OnInit {
 
-  constructor() { }
+  perguntas: perguntas[] = []
+
+  constructor(private perguntasService: PerguntasService) { }
 
   ngOnInit(): void {
+    this.getPerguntas();
+  }
+
+  private getPerguntas(){
+    this.perguntasService.getPerguntas().subscribe(
+      (result : any) => {
+        this.perguntas = result
+        console.log(this.perguntas)
+      }
+    )
   }
 
 }

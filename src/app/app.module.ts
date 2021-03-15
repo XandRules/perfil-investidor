@@ -8,17 +8,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemQuestionsService } from './in-memory-database';
 import { PerfilInvestidorModule } from './perfil-investidor/perfil-investidor.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
+  AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     PerfilInvestidorModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemQuestionsService),
+    ModalModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]

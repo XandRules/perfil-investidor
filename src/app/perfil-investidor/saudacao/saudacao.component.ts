@@ -1,33 +1,56 @@
+import { Termos } from './../models/termos.model';
+import { TermosService } from './../service/termos.service';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { EMPTY, empty, fromEvent, Observable } from 'rxjs';
+import { take, switchMap } from 'rxjs/operators';
+import { ModalService } from '../service/modal-service.service';
 
 @Component({
   selector: 'app-saudacao',
   templateUrl: './saudacao.component.html',
   styleUrls: ['./saudacao.component.css']
 })
-export class SaudacaoComponent implements OnInit, AfterViewInit {
+export class SaudacaoComponent implements OnInit {
 
-  @ViewChild('termos', { static: false })
-  modalTela!: ElementRef;
+  termos!: Termos
 
-  constructor() {
-   }
+  constructor(
+    private modalService: ModalService,
+    private router: Router,
+    private termosService: TermosService) {
 
-  ngAfterViewInit(): void {
-    let openModal: Observable<any> = fromEvent(this.modalTela.nativeElement, 'click');
-
-    openModal.subscribe(() => {
-
-      return;
-    })
-  }
+    }
 
   ngOnInit(): void {
+    this.getTermos();
+  }
+
+  private getTermos(){
+    this.termosService.getTerm().subscribe(
+      (result : any) => {
+        this.termos = result[0]
+      }
+    )
   }
 
   saudacaoClick(): void{
 
+    const result = this.modalService.showModal(
+      this.termos.titulo,
+      this.termos.termo,
+      'OK, Entendi',
+      'Não Aceito'
+    );
+
+    result.asObservable()
+    .pipe(
+      take(1),
+      switchMap(result => result ? this.router.navigateByUrl('perfil-investidor/questionario'): EMPTY )
+    )
+    .subscribe();
   }
 
 }
+
+
