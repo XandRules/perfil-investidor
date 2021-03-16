@@ -43,7 +43,6 @@ export class QuestionarioComponent implements OnInit {
   }
 
   protected loadResource() {
-    console.log(this.currentAction)
     if(this.currentAction == "resultado"){
 
       const id: string = this.route.snapshot.params.id;
