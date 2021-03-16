@@ -7,6 +7,7 @@ const routes: Routes = [
   {path: '', component: SaudacaoComponent},
   {path: 'questionario', component: QuestionarioComponent},
   {path: 'questionario/resultado/:id', component: QuestionarioComponent},
+
 ];
 
 @NgModule({
