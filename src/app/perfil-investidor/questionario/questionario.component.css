@@ -2,3 +2,11 @@
   text-transform: uppercase;
   color: #993399;
 }
+
+.pergunta{
+  font-size: 20px;
+  margin: 10px;
+  color: #993399;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
