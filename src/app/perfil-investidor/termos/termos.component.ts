@@ -15,6 +15,8 @@ export class TermosComponent implements OnInit {
   @Input() okTxt!: string;
   @Input() cancelTxt: string = 'Cancelar';
 
+  aceitoTermos!: boolean
+
   confirmResult!: Subject<boolean>;
 
   constructor(public bsModalRef: BsModalRef) {

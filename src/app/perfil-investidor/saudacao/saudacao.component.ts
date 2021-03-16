@@ -51,6 +51,10 @@ export class SaudacaoComponent implements OnInit {
     .subscribe();
   }
 
+  aceito(){
+    this.router.navigateByUrl('perfil-investidor/questionario');
+  }
+
 }
 
 

@@ -1,5 +1,6 @@
 export interface Perguntas{
   id: number,
   pergunta: string,
-  alternativas: string[]
+  alternativas: string[],
+  type: string
 }

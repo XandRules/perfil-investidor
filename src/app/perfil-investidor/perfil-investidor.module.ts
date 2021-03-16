@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { QuestionarioComponent } from './questionario/questionario.component';
 import { SaudacaoComponent } from './saudacao/saudacao.component';
+import { TermosComponent } from './termos/termos.component';
 
 @NgModule({
-  declarations: [QuestionarioComponent, SaudacaoComponent],
+  declarations: [QuestionarioComponent, SaudacaoComponent, TermosComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     PerfilInvestidorRoutingModule,
     ReactiveFormsModule,
     FormsModule,
