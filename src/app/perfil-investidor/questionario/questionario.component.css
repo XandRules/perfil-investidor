@@ -10,3 +10,15 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.alternativa{
+  font-size: 14px;
+}
+hr {
+  border:none;
+  border-top:2px dashed #993399;
+  color:#fff;
+  background-color:#fff;
+  height:2px;
+  width:80%;
+}
