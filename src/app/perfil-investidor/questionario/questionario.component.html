@@ -2,9 +2,14 @@
 <div class="container">
   <h5 class="text-center mt-5 title">PERFIL DO INVESTIDOR - QUESTIONÁRIO</h5>
   <div class="text-center">
-    <div >
-      <p class="mt-3"></p>
+    <div class="m-5" *ngFor="let pergunta of perguntas; let i = index">
+      <span class="mb-4">{{i+1}} - {{pergunta.pergunta}}</span><br>
+      <div class="form-check form-check-inline" *ngFor="let item of pergunta.alternativas">
+        <input class="form-check-input col-4" type="radio" name="exampleRadios" id="exampleRadios1" [value]="item">
+        <label class="form-check-label" for="exampleRadios1">
+          {{item}}
+        </label>
+      </div>
     </div>
-    <li *ngFor="let item of perguntas">{{ item.id }}</li>
   </div>
 </div>

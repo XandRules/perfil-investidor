@@ -5,9 +5,11 @@ import { PerfilInvestidorRoutingModule } from './perfil-investidor-routing.modul
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
+import { QuestionarioComponent } from './questionario/questionario.component';
+import { SaudacaoComponent } from './saudacao/saudacao.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [QuestionarioComponent, SaudacaoComponent],
   imports: [
     CommonModule,
     PerfilInvestidorRoutingModule,
