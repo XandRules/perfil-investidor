@@ -1,6 +1,7 @@
-import { perguntas } from './../models/perguntas.model';
+import { Perguntas } from './../models/perguntas.model';
 import { PerguntasService } from './../service/perguntas.service';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-questionario',
@@ -9,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionarioComponent implements OnInit {
 
-  perguntas: perguntas[] = []
+  perguntas: Perguntas[] = []
 
-  constructor(private perguntasService: PerguntasService) { }
+  respostaForm!: FormGroup;
+
+  respostas: string[] = [];
+
+  constructor(private perguntasService: PerguntasService, private fb: FormBuilder) {
+
+    this.respostaForm = this.fb.group({
+      respostas: this.fb.array([]) ,
+    });
+  }
+
 
   ngOnInit(): void {
     this.getPerguntas();
@@ -19,11 +30,14 @@ export class QuestionarioComponent implements OnInit {
 
   private getPerguntas(){
     this.perguntasService.getPerguntas().subscribe(
-      (result : any) => {
+      (result : Perguntas[]) => {
         this.perguntas = result
-        console.log(this.perguntas)
       }
     )
+  }
+
+  salvar(){
+    console.log(this.respostas);
   }
 
 }

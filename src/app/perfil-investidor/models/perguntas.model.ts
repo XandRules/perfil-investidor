@@ -1,4 +1,4 @@
-export interface perguntas{
+export interface Perguntas{
   id: number,
   pergunta: string,
   alternativas: string[]

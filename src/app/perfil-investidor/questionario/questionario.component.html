@@ -1,17 +1,20 @@
 
 <div class="container">
   <h5 class="text-center mt-5 title">PERFIL DO INVESTIDOR - QUESTIONÁRIO</h5>
-  <div class="text-center">
-    <div class="col-12">
-      <div class="mt-5 mb-5 " *ngFor="let pergunta of perguntas; let i = index">
-        <span class="mb-4 pergunta">{{i+1}} - {{pergunta.pergunta}}</span><br>
-        <div class="form-check form-check-inline col-3" *ngFor="let item of pergunta.alternativas">
-          <input class="form-check-input col-4" type="radio" name="exampleRadios" id="exampleRadios1" [value]="item">
-          <label class="form-check-label" for="exampleRadios1">
+  <form class="text-center" novalidate>
+    <div class="col-12" *ngFor="let pergunta of perguntas; let i = index">
+      <div class="mt-5 mb-5 " >
+        <h2 class="mb-4 pergunta">{{pergunta.id}} - {{pergunta.pergunta}}</h2><br>
+        <div class="form-check form-check-inline col-3" *ngFor="let item of pergunta.alternativas" >
+          <input class="form-check-input col-4" type="radio" #resposta="ngModel" [name]="pergunta.pergunta" [id]="item" [value]="item" required [(ngModel)]="respostas[i]">
+          <label class="form-check-label" [for]="item">
             {{item}}
           </label>
         </div>
+        <hr>
       </div>
     </div>
-  </div>
+    <button class="btn btn-outline-primary m-3" [disabled]="" (click)="salvar()">Salvar</button>
+    <button class="btn btn-outline-primary">Cancelar</button>
+  </form>
 </div>

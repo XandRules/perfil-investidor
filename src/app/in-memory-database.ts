@@ -12,18 +12,18 @@ export class InMemQuestionsService implements InMemoryDbService {
           'Ganhar mais dinheiro, assumindo riscos agressivos'
         ]
       },
-      { id: 2, pergunta: 'Qual o seu comportamento relação aos seus investimentos?',
+      { id: 2, pergunta: 'Por quanto tempo você deseja manter os seus investimentos?',
         alternativas: [
-          'Preservar meu dinheiro sem correr riscos',
-          'Ganhar dinheiro, assumindo riscos moderados',
-          'Ganhar mais dinheiro, assumindo riscos agressivos'
+          'Até 1 ano',
+          'De 1 a 3 anos',
+          'Acima de 3 anos'
         ]
       },
-      { id: 3, pergunta: 'Qual o seu comportamento relação aos seus investimentos?',
+      { id: 3, pergunta: 'Quantos % desses investimentos você pode precisar em um ano?',
         alternativas: [
-          'Preservar meu dinheiro sem correr riscos',
-          'Ganhar dinheiro, assumindo riscos moderados',
-          'Ganhar mais dinheiro, assumindo riscos agressivos'
+          'Acima de 75%',
+          'De 26% a 74%',
+          'Até 25%'
         ]
       },
 
