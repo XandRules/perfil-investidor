@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 export class PerguntasService {
 
   apiUrlPerguntas = '/api/perguntas'
+  apiUrlRespostas = '/api/respostas'
   apiUrlAlternativas = '/api/opcaoresposta'
 
   constructor(private http: HttpClient) { }
@@ -18,6 +19,18 @@ export class PerguntasService {
 
   getAlternativas(): Observable<any>{
     return this.http.get<any>(this.apiUrlAlternativas);
+  }
+
+  getById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrlRespostas}/${id}`);
+  }
+
+  save(value: string[]){
+    let data= {
+      id: 1,
+      value: value
+    }
+    return this.http.post(this.apiUrlRespostas, data);
   }
 
 }

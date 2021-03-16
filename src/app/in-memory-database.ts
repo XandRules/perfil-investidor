@@ -52,6 +52,10 @@ export class InMemQuestionsService implements InMemoryDbService {
       'Opero frequentemente e conheço os riscos associados'
     ]
 
-    return {perguntas, termos, opcaoresposta};
+    let respostas: any = [
+
+    ]
+
+    return {perguntas, termos, opcaoresposta, respostas};
   }
 }

@@ -8,7 +8,7 @@
 
         <div *ngIf="pergunta.type == 'radio'">
           <div class="form-check form-check-inline col-3" *ngFor="let item of pergunta.alternativas" >
-            <input class="form-check-input col-4" type="radio" #resposta="ngModel"
+            <input class="form-check-input col-4" type="radio" #resposta="ngModel" (ngModelChange)="isValid()"
             [name]="pergunta.pergunta" [id]="item" [value]="item" required [(ngModel)]="respostas[i]">
             <label class="form-check-label" [for]="item">
               {{item}}
@@ -17,10 +17,11 @@
         </div>
 
         <div *ngIf="pergunta.type == 'option'">
-          <div class="" class="form-check form-check-inline " *ngFor="let option of pergunta.alternativas; let j = index" >
+          <div class="form-check form-check-inline " *ngFor="let option of pergunta.alternativas; let j = index" >
             <div class="form-group">
               <label [for]="option">{{option}}</label>
-              <select class="form-control" [id]="option" [name]="option" required [(ngModel)]="respostas[j+i]">
+              <select class="form-control" [id]="option" [name]="option" required
+                (ngModelChange)="isValid()" [(ngModel)]="respostas[j+i]">
                 <option [value]="item" *ngFor="let item of alternativas">{{item}}</option>
               </select>
             </div>
@@ -29,7 +30,7 @@
         <hr>
       </div>
     </div>
-    <button type="submit" class="btn btn-outline-primary m-3" [disabled]="" (click)="salvar()">Salvar</button>
+    <button type="submit" class="btn btn-outline-primary m-3" [disabled]="!valid" (click)="salvar()">Salvar</button>
     <button class="btn btn-outline-primary" (click)="home()">Cancelar</button>
   </form>
 </div>
