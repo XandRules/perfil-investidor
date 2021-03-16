@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { take, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,16 @@ export class PerguntasService {
       value: value
     }
     return this.http.post(this.apiUrlRespostas, data);
+  }
+
+  update(value: string[]){
+    let data= {
+      id: 1,
+      value: value
+    }
+    return this.http.put(this.apiUrlRespostas, data).pipe(
+      map(() => data)
+    );
   }
 
 }

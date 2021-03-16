@@ -51,7 +51,8 @@ export class QuestionarioComponent implements OnInit {
       this.perguntasService.getById(+id)
 
       .subscribe(resource => {
-        this.respostas = resource.value // binds resource loaded to resource form
+        this.respostas = resource.value
+        this.valid = true;
       },
       error => {
         alert('Ocorreu um erro no servidor')
@@ -67,7 +68,6 @@ export class QuestionarioComponent implements OnInit {
     this.perguntasService.getAlternativas().subscribe(
       (result : string[]) => {
         this.alternativas = result
-        console.log(this.alternativas)
       }
     )
   }
@@ -81,7 +81,23 @@ export class QuestionarioComponent implements OnInit {
   }
 
   salvar(){
+    if(this.currentAction == "resultado"){
+      this.update()
+    }else{
+      this.create();
+    }
+  }
+
+  create(){
     this.perguntasService.save(this.respostas).subscribe(
+      (result: any) =>{
+        this.router.navigate(['perfil-investidor','questionario', 'resultado', result.id])
+      }
+    )
+  }
+
+  update(){
+    this.perguntasService.update(this.respostas).subscribe(
       (result: any) =>{
         this.router.navigate(['perfil-investidor','questionario', 'resultado', result.id])
       }
