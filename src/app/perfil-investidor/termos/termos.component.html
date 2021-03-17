@@ -13,17 +13,17 @@
         <hr>
       </div>
       <div>
-        <form >
+        <form novalidate >
           <div class=" text-center form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
-            <label class="form-check-label" for="flexCheckDefault">
+            <input class="form-check-input" name="aceito" type="checkbox" [value]="aceitoTermos" id="termos" [(ngModel)]="aceitoTermos">
+            <label class="form-check-label" for="termos">
               Aceito os termos econdições acima
             </label>
           </div>
         </form>
       </div>
       <div class="m-2 text-center">
-        <button type="button" class="btn btn-primary m-2" (click)="onConfirm()">{{okTxt}}</button>
+        <button type="button" class="btn btn-primary m-2" (click)="onConfirm()" [disabled]="!aceitoTermos">{{okTxt}}</button>
         <button type="button" class="btn btn-danger m-2" data-dismiss="modal" (click)="onClose()">{{cancelTxt}}</button>
       </div>
     </div>

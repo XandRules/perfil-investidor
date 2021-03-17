@@ -1,18 +1,47 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { take, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PerguntasService {
 
-  apiUrl = '/api/perguntas'
+  apiUrlPerguntas = '/api/perguntas'
+  apiUrlRespostas = '/api/respostas'
+  apiUrlAlternativas = '/api/opcaoresposta'
 
   constructor(private http: HttpClient) { }
 
   getPerguntas(): Observable<any>{
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.apiUrlPerguntas);
+  }
+
+  getAlternativas(): Observable<any>{
+    return this.http.get<any>(this.apiUrlAlternativas);
+  }
+
+  getById(id: number): Observable<any>{
+    return this.http.get<any>(`${this.apiUrlRespostas}/${id}`);
+  }
+
+  save(value: string[]){
+    let data= {
+      id: 1,
+      value: value
+    }
+    return this.http.post(this.apiUrlRespostas, data);
+  }
+
+  update(value: string[]){
+    let data= {
+      id: 1,
+      value: value
+    }
+    return this.http.put(this.apiUrlRespostas, data).pipe(
+      map(() => data)
+    );
   }
 
 }
