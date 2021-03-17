@@ -3,6 +3,7 @@ import { PerguntasService } from './../service/perguntas.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-questionario',
@@ -23,7 +24,8 @@ export class QuestionarioComponent implements OnInit {
   constructor(
     private perguntasService: PerguntasService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private toastr: ToastrService) {
 
   }
 
@@ -83,6 +85,7 @@ export class QuestionarioComponent implements OnInit {
   private create() {
     this.perguntasService.save(this.respostas).subscribe(
       (result: any) => {
+        this.toastr.success('Dados Salvos', 'Seu cadastro foi salvo!');
         this.router.navigate(['perfil-investidor', 'questionario', 'resultado', result.id])
       }
     )

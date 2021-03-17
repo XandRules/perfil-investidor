@@ -11,6 +11,7 @@ import { PerfilInvestidorModule } from './perfil-investidor/perfil-investidor.mo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemQuestionsService),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ToastrModule.forRoot(),
 
   ],
   providers: [],
